@@ -17,3 +17,11 @@ after_success:
    - docker build -t dsknudsen/complex-nginx ./nginx
    - docker build -t dsknudsen/complex-server ./server
    - docker build -t dsknudsen/complex-worker ./worker
+# log in to docker CLI with special login syntax
+   - echo "$DOCKER_PWD" | docker login -us "$DOCKER_ID" --password-stdin
+# take images and push to Docker Hub
+   - docker push dsknudsen/complex-client
+   - docker push dsknudsen/complex-nginx
+   - docker push dsknudsen/complex-server
+   - docker push dsknudsen/complex-worker
+
