@@ -1,11 +1,11 @@
 version: "3"
 services:
   client:
-    image: "dsknudsen/client"
+    image: "dsknudsen/complex-client"
     mem_limit: 128m
     hostname: client
   server:
-    image: "dsknudsen/api"
+    image: "dsknudsen/complex-server"
     mem_limit: 128m
     hostname: api
     environment:
@@ -17,14 +17,14 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: "dsknudsen/worker"
+    image: "dsknudsen/complex-worker"
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "dsknudsen/nginx"
+    image: "dsknudsen/complex-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
